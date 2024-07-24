@@ -1,0 +1,222 @@
+const trainNetwork = {
+    // City Loop
+    "Flinders Street": ["Parliament", "Melbourne Central", "Flagstaff", "Southern Cross", "Richmond", "Jolimont"],
+    "Parliament": ["Melbourne Central", "Flinders Street"],
+    "Melbourne Central": ["Flagstaff", "Parliament"],
+    "Flagstaff": ["Southern Cross", "Melbourne Central"],
+    "Southern Cross": ["Flinders Street", "Flagstaff", "North Melbourne"],
+
+    // Sandringham Line
+    "South Yarra": ["Richmond", "Prahran"],
+    "Prahran": ["South Yarra", "Windsor"],
+    "Windsor": ["Prahran", "Balaclava"],
+    "Balaclava": ["Windsor", "Ripponlea"],
+    "Ripponlea": ["Balaclava", "Elsternwick"],
+    "Elsternwick": ["Ripponlea", "Gardenvale"],
+    "Gardenvale": ["Elsternwick", "North Brighton"],
+    "North Brighton": ["Gardenvale", "Middle Brighton"],
+    "Middle Brighton": ["North Brighton", "Brighton Beach"],
+    "Brighton Beach": ["Middle Brighton", "Hampton"],
+    "Hampton": ["Brighton Beach", "Sandringham"],
+    "Sandringham": ["Hampton"],
+
+    // Frankston Line
+    "Richmond": ["South Yarra", "East Richmond", "Burnley", "Flinders Street"],
+    "East Richmond": ["Richmond", "Burnley"],
+    "Burnley": ["East Richmond", "Hawthorn", "Glenferrie"],
+    "Hawthorn": ["Burnley", "Glenferrie"],
+    "Glenferrie": ["Hawthorn", "Auburn"],
+    "Auburn": ["Glenferrie", "Camberwell"],
+    "Camberwell": ["Auburn", "East Camberwell"],
+    "East Camberwell": ["Camberwell", "Canterbury"],
+    "Canterbury": ["East Camberwell", "Chatham"],
+    "Chatham": ["Canterbury", "Surrey Hills"],
+    "Surrey Hills": ["Chatham", "Mont Albert"],
+    "Mont Albert": ["Surrey Hills", "Box Hill"],
+    "Box Hill": ["Mont Albert", "Laburnum"],
+    "Laburnum": ["Box Hill", "Blackburn"],
+    "Blackburn": ["Laburnum", "Nunawading"],
+    "Nunawading": ["Blackburn", "Mitcham"],
+    "Mitcham": ["Nunawading", "Heatherdale"],
+    "Heatherdale": ["Mitcham", "Ringwood"],
+    "Ringwood": ["Heatherdale", "Ringwood East"],
+    "Ringwood East": ["Ringwood", "Croydon"],
+    "Croydon": ["Ringwood East", "Mooroolbark"],
+    "Mooroolbark": ["Croydon", "Lilydale"],
+    "Lilydale": ["Mooroolbark"],
+
+    // Belgrave Line
+    "Ringwood": ["Heatherdale", "Heathmont"],
+    "Heathmont": ["Ringwood", "Bayswater"],
+    "Bayswater": ["Heathmont", "Boronia"],
+    "Boronia": ["Bayswater", "Ferntree Gully"],
+    "Ferntree Gully": ["Boronia", "Upper Ferntree Gully"],
+    "Upper Ferntree Gully": ["Ferntree Gully", "Upwey"],
+    "Upwey": ["Upper Ferntree Gully", "Tecoma"],
+    "Tecoma": ["Upwey", "Belgrave"],
+    "Belgrave": ["Tecoma"],
+
+    // Glen Waverley Line
+    "Burnley": ["East Richmond", "Heyington"],
+    "Heyington": ["Burnley", "Kooyong"],
+    "Kooyong": ["Heyington", "Tooronga"],
+    "Tooronga": ["Kooyong", "Gardiner"],
+    "Gardiner": ["Tooronga", "Glen Iris"],
+    "Glen Iris": ["Gardiner", "Darling"],
+    "Darling": ["Glen Iris", "East Malvern"],
+    "East Malvern": ["Darling", "Holmesglen"],
+    "Holmesglen": ["East Malvern", "Jordanville"],
+    "Jordanville": ["Holmesglen", "Mount Waverley"],
+    "Mount Waverley": ["Jordanville", "Syndal"],
+    "Syndal": ["Mount Waverley", "Glen Waverley"],
+    "Glen Waverley": ["Syndal"],
+
+    // Cranbourne/Pakenham Line
+    "Caulfield": ["Malvern", "Glenhuntly", "Carnegie"],
+    "Malvern": ["Caulfield", "Armadale"],
+    "Armadale": ["Malvern", "Toorak"],
+    "Toorak": ["Armadale", "Hawksburn"],
+    "Hawksburn": ["Toorak", "South Yarra"],
+    "Glenhuntly": ["Caulfield", "Ormond"],
+    "Ormond": ["Glenhuntly", "McKinnon"],
+    "McKinnon": ["Ormond", "Bentleigh"],
+    "Bentleigh": ["McKinnon", "Patterson"],
+    "Patterson": ["Bentleigh", "Moorabbin"],
+    "Moorabbin": ["Patterson", "Highett"],
+    "Highett": ["Moorabbin", "Southland"],
+    "Southland": ["Highett", "Cheltenham"],
+    "Cheltenham": ["Southland", "Mentone"],
+    "Mentone": ["Cheltenham", "Parkdale"],
+    "Parkdale": ["Mentone", "Mordialloc"],
+    "Mordialloc": ["Parkdale", "Aspendale"],
+    "Aspendale": ["Mordialloc", "Edithvale"],
+    "Edithvale": ["Aspendale", "Chelsea"],
+    "Chelsea": ["Edithvale", "Bonbeach"],
+    "Bonbeach": ["Chelsea", "Carrum"],
+    "Carrum": ["Bonbeach", "Seaford"],
+    "Seaford": ["Carrum", "Kananook"],
+    "Kananook": ["Seaford", "Frankston"],
+    "Frankston": ["Kananook"],
+
+    // Cranbourne Line
+    "South Yarra": ["Richmond"],
+    "Hawksburn": ["South Yarra", "Toorak"],
+    "Toorak": ["Hawksburn", "Armadale"],
+    "Armadale": ["Toorak", "Malvern"],
+    "Malvern": ["Armadale", "Caulfield"],
+    "Caulfield": ["Malvern", "Carnegie"],
+    "Carnegie": ["Caulfield", "Murrumbeena"],
+    "Murrumbeena": ["Carnegie", "Hughesdale"],
+    "Hughesdale": ["Murrumbeena", "Oakleigh"],
+    "Oakleigh": ["Hughesdale", "Huntingdale"],
+    "Huntingdale": ["Oakleigh", "Clayton"],
+    "Clayton": ["Huntingdale", "Westall"],
+    "Westall": ["Clayton", "Springvale"],
+    "Springvale": ["Westall", "Sandown Park"],
+    "Sandown Park": ["Springvale", "Noble Park"],
+    "Noble Park": ["Sandown Park", "Yarraman"],
+    "Yarraman": ["Noble Park", "Dandenong"],
+    "Dandenong": ["Yarraman", "Lynbrook"],
+    "Lynbrook": ["Dandenong", "Merinda Park"],
+    "Merinda Park": ["Lynbrook", "Cranbourne"],
+    "Cranbourne": ["Merinda Park"],
+
+    // Pakenham Line
+    "Dandenong": ["Narre Warren", "Hallam"],
+    "Narre Warren": ["Dandenong", "Berwick"],
+    "Berwick": ["Narre Warren", "Beaconsfield"],
+    "Beaconsfield": ["Berwick", "Officer"],
+    "Officer": ["Beaconsfield", "Cardinia Road"],
+    "Cardinia Road": ["Officer", "Pakenham"],
+    "Pakenham": ["Cardinia Road"],
+
+    // Williamstown Line
+    "Williamstown": ["Williamstown Beach"],
+    "Williamstown Beach": ["North Williamstown"],
+    "North Williamstown": ["Newport"],
+    "Newport": ["North Williamstown", "Spotswood"],
+    "Spotswood": ["Newport", "Yarraville"],
+    "Yarraville": ["Spotswood", "Seddon"],
+    "Seddon": ["Yarraville", "Footscray"],
+    "Footscray": ["Seddon", "Middle Footscray", "West Footscray"],
+    "Middle Footscray": ["Footscray", "West Footscray"],
+    "West Footscray": ["Middle Footscray", "Tottenham"],
+    "Tottenham": ["West Footscray", "Sunshine"],
+    "Sunshine": ["Tottenham", "Albion"],
+    "Albion": ["Sunshine", "Ginifer"],
+    "Ginifer": ["Albion", "St Albans"],
+    "St Albans": ["Ginifer", "Keilor Plains"],
+    "Keilor Plains": ["St Albans", "Watergardens"],
+    "Watergardens": ["Keilor Plains", "Sydenham"],
+    "Sydenham": ["Watergardens"],
+
+    // Werribee Line
+    "Laverton": ["Aircraft", "Williams Landing"],
+    "Aircraft": ["Laverton", "Williams Landing"],
+    "Williams Landing": ["Aircraft", "Hoppers Crossing"],
+    "Hoppers Crossing": ["Williams Landing", "Werribee"],
+    "Werribee": ["Hoppers Crossing", "Tarneit"],
+    "Tarneit": ["Werribee", "Wyndham Vale"],
+    "Wyndham Vale": ["Tarneit", "Deer Park"],
+    "Deer Park": ["Wyndham Vale", "Ardeer"],
+    "Ardeer": ["Deer Park", "Sunshine"],
+
+    // Upfield Line
+    "North Melbourne": ["Macaulay", "South Kensington"],
+    "Macaulay": ["North Melbourne", "Flemington Bridge"],
+    "Flemington Bridge": ["Macaulay", "Royal Park"],
+    "Royal Park": ["Flemington Bridge", "Jewell"],
+    "Jewell": ["Royal Park", "Brunswick"],
+    "Brunswick": ["Jewell", "Anstey"],
+    "Anstey": ["Brunswick", "Moreland"],
+    "Moreland": ["Anstey", "Coburg"],
+    "Coburg": ["Moreland", "Batman"],
+    "Batman": ["Coburg", "Merlynston"],
+    "Merlynston": ["Batman", "Fawkner"],
+    "Fawkner": ["Merlynston", "Gowrie"],
+    "Gowrie": ["Fawkner", "Upfield"],
+    "Upfield": ["Gowrie"]
+};
+
+// Breadth-First Search function to find the shortest path
+function bfs(graph, start, end) {
+    let queue = [[start]]; // Initialize the queue with the start node
+    let visited = new Set([start]); // Mark the start node as visited
+
+    while (queue.length > 0) {
+        let path = queue.shift(); // Get the first path from the queue
+        let node = path[path.length - 1]; // Get the last node from the path
+
+        if (node === end) {
+            return path; // Return the path if the end node is reached
+        }
+
+        for (let neighbor of graph[node]) {
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor); // Mark the neighbor as visited
+                let newPath = path.slice();
+                newPath.push(neighbor); // Add the neighbor to the path
+                queue.push(newPath); // Add the new path to the queue
+            }
+        }
+    }
+
+    return null; // Return null if no path is found
+}
+
+// Function to get the number of steps in the shortest path
+function getNumberOfSteps(graph, start, end) {
+    let path = bfs(graph, start, end);
+    return path ? path.length - 1 : -1; // Return the number of steps or -1 if no path is found
+}
+
+// Example usage
+let startStation = "Flinders Street";
+let endStation = "Box Hill";
+let steps = getNumberOfSteps(trainNetwork, startStation, endStation);
+
+if (steps != -1) {
+    console.log(`The number of steps from ${startStation} to ${endStation} is: ${steps}`);
+} else {
+    console.log(`No path found from ${startStation} to ${endStation}`);
+}
