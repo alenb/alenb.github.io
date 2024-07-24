@@ -179,8 +179,14 @@ const trainNetwork = {
 };
 
 function bfs(graph, start, end) {
+    if (!graph[start] || !graph[end]) {
+        console.error(`Start or end station does not exist in the graph: ${start}, ${end}`);
+        return null;
+    }
+
     let queue = [[start]];
     let visited = new Set();
+    visited.add(start);
 
     while (queue.length > 0) {
         let path = queue.shift();
@@ -190,17 +196,16 @@ function bfs(graph, start, end) {
             return path;
         }
 
-        if (!visited.has(node)) {
-            visited.add(node);
-
-            if (graph[node]) {  // Ensure node exists in graph
-                for (let neighbor of graph[node]) {
-                    let newPath = [...path, neighbor];
-                    queue.push(newPath);
-                }
+        for (let neighbor of graph[node]) {
+            if (!visited.has(neighbor)) {
+                visited.add(neighbor);
+                let newPath = [...path, neighbor];
+                queue.push(newPath);
             }
         }
     }
+
+    console.error(`No path found from ${start} to ${end}`);
     return null;
 }
 
