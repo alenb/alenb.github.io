@@ -22,6 +22,7 @@ const trainNetwork = {
 
     // Frankston Line
     "Richmond": ["South Yarra", "East Richmond", "Burnley", "Flinders Street"],
+    "Jolimont": ["Flinders Street"],
     "East Richmond": ["Richmond", "Burnley"],
     "Burnley": ["East Richmond", "Hawthorn", "Glenferrie"],
     "Hawthorn": ["Burnley", "Glenferrie"],
