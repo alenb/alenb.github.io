@@ -46,7 +46,7 @@ const trainNetwork = {
     "Ringwood East": ["Ringwood", "Croydon"],
     "Croydon": ["Ringwood East", "Mooroolbark"],
     "Mooroolbark": ["Croydon", "Lilydale"],
-    "Lilydale": ["Mooroolbark"],
+    "Lilydale": ["Mooroolbark"]
 
     // Belgrave Line
     "Ringwood": ["Heatherdale", "Heathmont"],
