@@ -192,8 +192,17 @@ function bfs(graph, start, end) {
         let path = queue.shift();
         let node = path[path.length - 1];
 
+        console.log(`Current node: ${node}`);
+        console.log(`Neighbors: ${graph[node]}`);
+
         if (node === end) {
             return path;
+        }
+
+        // Check if graph[node] is iterable
+        if (!Array.isArray(graph[node])) {
+            console.error(`The node ${node} does not have an iterable array as neighbors.`);
+            return null;
         }
 
         for (let neighbor of graph[node]) {
@@ -208,6 +217,7 @@ function bfs(graph, start, end) {
     console.error(`No path found from ${start} to ${end}`);
     return null;
 }
+
 
 function getNumberOfSteps(graph, start, end) {
     let path = bfs(graph, start, end);
