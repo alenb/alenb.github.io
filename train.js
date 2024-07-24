@@ -36,7 +36,7 @@ const trainNetwork = {
     "Chatham": ["Canterbury", "Surrey Hills"],
     "Surrey Hills": ["Chatham", "Mont Albert"],
     "Mont Albert": ["Surrey Hills", "Box Hill"],
-    "Box Hill": ["Mont Albert", "Laburnum"],
+    "Box Hill": ["Mont Albert", "Laburnum", "Kew", "Canterbury"],
     "Laburnum": ["Box Hill", "Blackburn"],
     "Blackburn": ["Laburnum", "Nunawading"],
     "Nunawading": ["Blackburn", "Mitcham"],
