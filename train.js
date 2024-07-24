@@ -5,6 +5,8 @@ const trainNetwork = {
     "Melbourne Central": ["Flagstaff", "Parliament"],
     "Flagstaff": ["Southern Cross", "Melbourne Central"],
     "Southern Cross": ["Flinders Street", "Flagstaff", "North Melbourne"],
+    "Richmond": ["South Yarra", "East Richmond", "Burnley", "Flinders Street"],
+    "Jolimont": ["Flinders Street"],
 
     // Sandringham Line
     "South Yarra": ["Richmond", "Prahran"],
@@ -21,8 +23,8 @@ const trainNetwork = {
     "Sandringham": ["Hampton"],
 
     // Frankston Line
+    "South Yarra": ["Richmond"],
     "Richmond": ["South Yarra", "East Richmond", "Burnley", "Flinders Street"],
-    "Jolimont": ["Flinders Street"],
     "East Richmond": ["Richmond", "Burnley"],
     "Burnley": ["East Richmond", "Hawthorn", "Glenferrie"],
     "Hawthorn": ["Burnley", "Glenferrie"],
