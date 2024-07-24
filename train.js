@@ -178,36 +178,39 @@ const trainNetwork = {
     "Upfield": ["Gowrie"]
 };
 
-// Breadth-First Search function to find the shortest path
 function bfs(graph, start, end) {
-    let queue = [[start]]; // Initialize the queue with the start node
-    let visited = new Set([start]); // Mark the start node as visited
+    let queue = [[start]];
+    let visited = new Set();
 
     while (queue.length > 0) {
-        let path = queue.shift(); // Get the first path from the queue
-        let node = path[path.length - 1]; // Get the last node from the path
+        let path = queue.shift();
+        let node = path[path.length - 1];
 
         if (node === end) {
-            return path; // Return the path if the end node is reached
+            return path;
         }
 
-        for (let neighbor of graph[node]) {
-            if (!visited.has(neighbor)) {
-                visited.add(neighbor); // Mark the neighbor as visited
-                let newPath = path.slice();
-                newPath.push(neighbor); // Add the neighbor to the path
-                queue.push(newPath); // Add the new path to the queue
+        if (!visited.has(node)) {
+            visited.add(node);
+
+            if (graph[node]) {  // Ensure node exists in graph
+                for (let neighbor of graph[node]) {
+                    let newPath = [...path, neighbor];
+                    queue.push(newPath);
+                }
             }
         }
     }
-
-    return null; // Return null if no path is found
+    return null;
 }
 
-// Function to get the number of steps in the shortest path
 function getNumberOfSteps(graph, start, end) {
     let path = bfs(graph, start, end);
-    return path ? path.length - 1 : -1; // Return the number of steps or -1 if no path is found
+    if (path) {
+        return path.length - 1;
+    } else {
+        return -1;  // or some other error indicator if the path does not exist
+    }
 }
 
 // Example usage
